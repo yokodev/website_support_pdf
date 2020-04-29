@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="website_support_ticket_view_form_extended" model="ir.ui.view">
+        <field name="name">website.support.ticket form view extended</field>
+        <field name="model">website.support.ticket</field>
+        <field name="inherit_id" ref="website_support.website_support_ticket_view_form"/>
+        <field name="arch" type="xml">
+          <button name="request_approval" position="after">
+            <button type="object" name="generate_pdf" string="PDF"/>
+          </button>
+        </field>
+    </record>
+</odoo>
