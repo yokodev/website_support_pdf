@@ -6,7 +6,9 @@
     'application':False,
     'depends':['website_support'],
     'data': [
-        'views/website_support_ticket_views.xml'
+        # 'views/website_support_ticket_views.xml',
+        'reports/report.xml',
+        'reports/ticket.xml'
     ],
 
 }

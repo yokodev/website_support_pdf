@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="report_ticket">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="o">
+        <t t-call="web.external_layout">
+          <div class="page">
+            <table class="table">
+              <thead>
+                <tr>
+                  <td>
+                    <span class="text-center" t-field="o.subject"/>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" class="w-25 p-3 table-info ">Ticket number</th>
+                  <td class="w-75 p-3 text-left"><span t-field="o.ticket_number"/></td>
+                  <th scope="row" class="w-25 p-3 table-info ">Assigned User</th>
+                  <td class="w-75 p-3 text-left"><span t-field="o.user_id"/></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="table-info ">Channel</th>
+                  <td class="text-left"><span t-field="o.channel"/></td>
+                  <th scope="row" class="table-info ">Partner</th>
+                  <td class="text-left"><span t-field="o.partner_id"/></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="table-info ">Priority</th>
+                  <td class="text-left"><span t-field="o.priority_id"/></td>
+                  <th scope="row" class="table-info ">Person Name</th>
+                  <td class="text-left"><span t-field="o.person_name"/></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="table-info ">Tags</th>
+                  <td class="text-left"><span t-field="o.tag_ids"/></td>
+                  <th scope="row" class="table-info ">Email</th>
+                  <td class="text-left"><span t-field="o.email"/></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="table-info ">Category</th>
+                  <td class="text-left"><span t-field="o.category_id"/></td>
+                  <th scope="row" class="table-info ">Approval</th>
+                  <td class="text-left"><span t-field="o.approval_id"/></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="table-info ">Sub Category</th>
+                  <td class="text-left"><span t-field="o.sub_category_id"/></td>
+                  <th scope="row" class="table-info ">Support Rating</th>
+                  <td class="text-left"><span t-field="o.support_rating"/></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="table-info ">State</th>
+                  <td class="text-left"><span t-field="o.state_id"/></td>
+                  <th scope="row" class="table-info ">Close Time</th>
+                  <td class="text-left"><span t-field="o.close_time"/></td>
+                </tr>
+                <tr>
+                  <td colspan="2"></td>
+                  <th scope="row" class="table-info ">Closed by</th>
+                  <td class="text-left"><span t-field="o.closed_by_id"/></td>
+                </tr>
+                <tr>
+                  <td colspan="2"></td>
+                  <th scope="row" class="table-info ">Support Comment</th>
+                  <td class="text-left"><span t-field="o.support_comment"/></td>
+                </tr>
+              </tbody>
+            </table>  
+
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+</odoo>
+

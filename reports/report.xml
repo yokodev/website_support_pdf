@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <report
+    id="main_ticket"
+    string="Ticket Report"
+    model="website.support.ticket"
+    report_type="qweb-pdf"
+    name="website_support_rw_001.report_ticket"
+    file="website_support_rw_001.report_ticket"
+  />
+</odoo>
+
