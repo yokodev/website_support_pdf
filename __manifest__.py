@@ -7,6 +7,7 @@
     'depends':['website_support'],
     'data': [
         # 'views/website_support_ticket_views.xml',
+        # 'reports/paperformat.xml',
         'reports/report.xml',
         'reports/ticket.xml'
     ],

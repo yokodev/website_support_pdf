@@ -3,74 +3,177 @@
   <template id="report_ticket">
     <t t-call="web.html_container">
       <t t-foreach="docs" t-as="o">
-        <t t-call="web.external_layout">
-          <div class="page">
-            <table class="table">
-              <thead>
-                <tr>
-                  <td>
-                    <span class="text-center" t-field="o.subject"/>
-                  </td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row" class="w-25 p-3 table-info ">Ticket number</th>
-                  <td class="w-75 p-3 text-left"><span t-field="o.ticket_number"/></td>
-                  <th scope="row" class="w-25 p-3 table-info ">Assigned User</th>
-                  <td class="w-75 p-3 text-left"><span t-field="o.user_id"/></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="table-info ">Channel</th>
-                  <td class="text-left"><span t-field="o.channel"/></td>
-                  <th scope="row" class="table-info ">Partner</th>
-                  <td class="text-left"><span t-field="o.partner_id"/></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="table-info ">Priority</th>
-                  <td class="text-left"><span t-field="o.priority_id"/></td>
-                  <th scope="row" class="table-info ">Person Name</th>
-                  <td class="text-left"><span t-field="o.person_name"/></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="table-info ">Tags</th>
-                  <td class="text-left"><span t-field="o.tag_ids"/></td>
-                  <th scope="row" class="table-info ">Email</th>
-                  <td class="text-left"><span t-field="o.email"/></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="table-info ">Category</th>
-                  <td class="text-left"><span t-field="o.category_id"/></td>
-                  <th scope="row" class="table-info ">Approval</th>
-                  <td class="text-left"><span t-field="o.approval_id"/></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="table-info ">Sub Category</th>
-                  <td class="text-left"><span t-field="o.sub_category_id"/></td>
-                  <th scope="row" class="table-info ">Support Rating</th>
-                  <td class="text-left"><span t-field="o.support_rating"/></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="table-info ">State</th>
-                  <td class="text-left"><span t-field="o.state_id"/></td>
-                  <th scope="row" class="table-info ">Close Time</th>
-                  <td class="text-left"><span t-field="o.close_time"/></td>
-                </tr>
-                <tr>
-                  <td colspan="2"></td>
-                  <th scope="row" class="table-info ">Closed by</th>
-                  <td class="text-left"><span t-field="o.closed_by_id"/></td>
-                </tr>
-                <tr>
-                  <td colspan="2"></td>
-                  <th scope="row" class="table-info ">Support Comment</th>
-                  <td class="text-left"><span t-field="o.support_comment"/></td>
-                </tr>
-              </tbody>
-            </table>  
+        <!--<t t-call="web.external_layout">-->
+          <div >
+            <!--First Row Main body of Ticket-->
+            <div class="row">
+              <div class="col">
+                <div class="article">
+                  <table class="table table-condensed table-bordered" style="width: 100%">
+                    <caption  style="caption-side:top">
+                      <h3><span  t-field="o.subject"/></h3>
+                    </caption>
+                    <tbody>
+                        <!--This is the problem I'm having with the description field apparently is coming without being cleaned up with a <p>-->
+                          <!--both at the begining and end of the string. Some worarounds would be to trimit like so "o.description[:7]"-->
+                      <tr>
+                        <th scope="row" class="table-info" style="width: 20%">Ticket Description</th>
+                        <td class="text-left" colspan="3" ><t t-esc="o.description"/></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="table-info" style="width: 20%">Ticket number</th>
+                        <td class="text-left" style="width: 30%"><span t-field="o.ticket_number"/></td>
+                        <th scope="row" class="table-info" style="width: 20%">Assigned User</th>
+                        <td class="text-left" style="width: 30%"><span t-field="o.user_id"/></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="table-info ">Channel</th>
+                        <td class="text-left"><span t-field="o.channel"/></td>
+                        <th scope="row" class="table-info ">Partner</th>
+                        <td class="text-left"><span t-field="o.partner_id"/></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="table-info ">Priority</th>
+                        <td class="text-left"><span t-field="o.priority_id"/></td>
+                        <th scope="row" class="table-info ">Person Name</th>
+                        <td class="text-left"><span t-field="o.person_name"/></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="table-info ">Tags</th>
+                        <td class="text-left"><span t-field="o.tag_ids"/></td>
+                        <th scope="row" class="table-info ">Email</th>
+                        <td class="text-left"><span t-field="o.email"/></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="table-info ">Category</th>
+                        <td class="text-left"><span t-field="o.category_id"/></td>
+                        <th scope="row" class="table-info ">Approval</th>
+                        <td class="text-left"><span t-field="o.approval_id"/></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="table-info ">Sub Category</th>
+                        <td class="text-left"><span t-field="o.sub_category_id"/></td>
+                        <th scope="row" class="table-info ">Support Rating</th>
+                        <td class="text-left"><span t-field="o.support_rating"/></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="table-info ">State</th>
+                        <td class="text-left"><span t-field="o.state_id"/></td>
+                        <th scope="row" class="table-info ">Close Time</th>
+                        <td class="text-left"><span t-field="o.close_time"/></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"></td>
+                        <th scope="row" class="table-info ">Closed by</th>
+                        <td class="text-left"><span t-field="o.closed_by_id"/></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="table-info ">Support Comment</th>
+                        <td class="text-left" colspan="3"><span t-field="o.support_comment"/></td>
+                      </tr>
+                    </tbody>
+                  </table>  
+                </div>
+              </div>
+            </div>
+            <!--first row-->
+            <!--Second row-->
+            <div class="row">
 
+            </div>
+            <!--Second row-->
+            <!--begin  Extra fields-->
+            <div class="row">
+              <div class="col">
+                <div class="article">
+                  <table class="table table-condensed table-bordered" style="width: 100%">
+                    <caption style="caption-side:top">Extra Fields</caption>
+                    <thead>
+                      <th class="table-info text-center">Label</th>
+                      <th class="table-info text-center">Value</th>
+                    </thead>
+                    <tbody>
+                      <t t-foreach="o.extra_field_ids" t-as="i">
+                        <tr>
+                          <th scope="row"><t t-esc="i.name"/></th>
+                          <td class="text-left"><t t-esc="i.value"/></td>
+                        </tr>
+                      </t>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--END Extra fields-->
+            <!--begin SLA-->
+            <div class="row">
+              <div class="col">
+                <div class="article">
+                  <table class="table table-condensed table-bordered" style="width: 100%">
+                    <caption style="caption-side:top">SLA</caption>
+                    <tbody>
+                      <tr>
+                        <th scope="row" class="table-info" style="width: 20%">SLA</th>
+                        <td class="text-left" style="width: 30%"><span t-field="o.sla_id"/></td>
+                        <th scope="row" class="table-info" style="width: 20%">SLA Active</th>
+                        <td class="text-left" style="width: 30%"><span t-field="o.sla_active"/></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" class="table-info" style="width: 20%">SLA time Remaining</th>
+                        <td class="text-left" style="width: 30%"><span t-field="o.sla_timer"/></td>
+                        <th scope="row" class="table-info" style="width: 20%">SLA Rule</th>
+                        <td class="text-left" style="width: 30%"><span t-field="o.sla_rule_id"/></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--END SLA-->
+            <!--begin LOGS-->
+            <div class="row">
+              <div class="col">
+                <div class="article">
+                  <table class="table table-condensed table-bordered" style="width: 100%">
+                    <caption style="caption-side:top">LOGS</caption>
+                    <tbody>
+                      <t t-foreach="doc_ids" t-as="i">
+                        <tr>
+                          <th scope="row"><t t-esc="doc"/></th>
+                          <!--<td class="text-left"><t t-esc="i.description"/></td>-->
+                        </tr>
+
+                      <!--<t t-foreach="o.message_ids" t-as="i">-->
+                        <!--<tr>-->
+                          <!--<th scope="row"><t t-esc="i.notification_ids"/></th>-->
+                          <!--<td class="text-left"><t t-esc="i.description"/></td>-->
+                        <!--</tr>-->
+                          
+                            <!--<tr>-->
+                          <!--<th scope="row"><t t-esc="i.record_name"/></th>-->
+                          <!--<td class="text-left"><t t-esc="i.message_id"/></td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                          <!--<th scope="row"><t t-esc="i.display_name"/></th>-->
+                          <!--<td class="text-left"><t t-esc="i.child_ids"/></td>-->
+                        <!--</tr>-->
+                      </t>
+                      <!--<tr>-->
+                        <!--<th scope="row" class="table-info" style="width: 20%">SLA time Remaining</th>-->
+                        <!--<td class="text-left" style="width: 30%"><span t-field="o.sla_timer"/></td>-->
+                        <!--<th scope="row" class="table-info" style="width: 20%">SLA Rule</th>-->
+                        <!--<td class="text-left" style="width: 30%"><span t-field="o.sla_rule_id"/></td>-->
+                      <!--</tr>-->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--END LOGS-->
+            <!--BEGIN TRY-->
+            <!--END TRY-->
           </div>
-        </t>
+        <!--</t>-->
       </t>
     </t>
   </template>

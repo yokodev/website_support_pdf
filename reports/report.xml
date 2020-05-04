@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+  <!--Paper format for report-->
+<record id="paperformat_ticket" model="report.paperformat">
+    <field name="name">Ticket PaperFormat</field>
+    <field name="default" eval="True"/>
+    <!--<field name="format">Letter</field>-->
+    <!--<field name="format">Letter</field>-->
+    <!--<field name="page_height">80</field>-->
+    <!--<field name="page_width">175</field>-->
+    <field name="orientation">Landscape</field>
+    <!--<field name="margin_top">1</field>-->
+    <!--<field name="margin_bottom">3</field>-->
+    <!--<field name="margin_left">3</field>-->
+    <!--<field name="margin_right">3</field>-->
+    <!--<field name="header_line" eval="True"/>-->
+    <!--<field name="header_spacing">1</field>-->
+    <!--<field name="dpi">80</field>-->
+</record>
   <report
     id="main_ticket"
     string="Ticket Report"
