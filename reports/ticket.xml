@@ -3,6 +3,7 @@
   <template id="report_ticket">
     <t t-call="web.html_container">
       <t t-foreach="docs" t-as="o">
+
         <!--<t t-call="web.external_layout">-->
           <div >
             <!--First Row Main body of Ticket-->
@@ -135,35 +136,37 @@
               <div class="col">
                 <div class="article">
                   <table class="table table-condensed table-bordered" style="width: 100%">
-                    <caption style="caption-side:top">LOGS</caption>
+                    <caption style="caption-side:top">CONVERSATION HISTORY IDS</caption>
                     <tbody>
-                      <t t-foreach="doc_ids" t-as="i">
-                        <tr>
-                          <th scope="row"><t t-esc="doc"/></th>
-                          <!--<td class="text-left"><t t-esc="i.description"/></td>-->
-                        </tr>
-
-                      <!--<t t-foreach="o.message_ids" t-as="i">-->
+                      <tr><th>By</th><th>From</th><th>Message</th></tr>
+                      <t t-foreach="o.conversation_history_ids" t-as="chat">
+                      <tr>
+                        <td><t t-esc="chat.by"/></td>
+                        <td>
+                          <t t-if="chat.by == ''">
+                            <t t-esc="chat.create_uid.name"/>
+                          </t>
+                          <t t-if="chat.by == 'staff'">
+                            <t t-esc="chat.create_uid.name"/>
+                          </t>
+                          <t t-if="chat.by == 'customer'">
+                            <t t-if="chat.ticket_id.person_name">
+                              <t t-esc="chat.ticket_id.person_name"/>
+                            </t>
+                            <t t-if="not chat.ticket_id.person_name">
+                              <t t-esc="chat.ticket_id.email"/>
+                            </t>
+                          </t>
+                        </td>
+                        <td><t t-raw="chat.content"/></td>
+                      </tr>
+                      <!--This is what I gother from -->
+                      <!--<t t-foreach="doc_ids" t-as="i">-->
                         <!--<tr>-->
-                          <!--<th scope="row"><t t-esc="i.notification_ids"/></th>-->
-                          <!--<td class="text-left"><t t-esc="i.description"/></td>-->
-                        <!--</tr>-->
-                          
-                            <!--<tr>-->
-                          <!--<th scope="row"><t t-esc="i.record_name"/></th>-->
-                          <!--<td class="text-left"><t t-esc="i.message_id"/></td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                          <!--<th scope="row"><t t-esc="i.display_name"/></th>-->
-                          <!--<td class="text-left"><t t-esc="i.child_ids"/></td>-->
+                          <!--<th scope="row"><t t-esc="doc"/></th>-->
+                          <!--[><td class="text-left"><t t-esc="i.description"/></td><]-->
                         <!--</tr>-->
                       </t>
-                      <!--<tr>-->
-                        <!--<th scope="row" class="table-info" style="width: 20%">SLA time Remaining</th>-->
-                        <!--<td class="text-left" style="width: 30%"><span t-field="o.sla_timer"/></td>-->
-                        <!--<th scope="row" class="table-info" style="width: 20%">SLA Rule</th>-->
-                        <!--<td class="text-left" style="width: 30%"><span t-field="o.sla_rule_id"/></td>-->
-                      <!--</tr>-->
                     </tbody>
                   </table>
                 </div>
@@ -172,6 +175,84 @@
             <!--END LOGS-->
             <!--BEGIN TRY-->
             <!--END TRY-->
+            <!--begin con wiget-->
+            <div class="row">
+              <div class="col">
+                <div class="o_chatter oe_chatter">
+                  <div class="o_mail_thread">
+                    <div class="o_mail_thread_content">
+                    <t t-foreach="o.message_ids" t-as="i">
+                      <div class="o_thread_date_separator">
+                          <span class="o_thread_date" t-field="i.date" t-options='{"widget": "date", "format": "d MMMM yyyy"}'/>
+                      </div>
+************************************************************************
+											<div class="o_thread_message  o_mail_not_discussion o_thread_selected_message" data-message-id="43">
+												<div class="o_thread_message_sidebar">
+                          <img t-attf-src="data:image/jpg;base64,{{i.author_avatar }}"  class="o_thread_message_avatar rounded-circle"/>
+                          <span t-field="i.message_type" />
+													<!--<img alt="" src="/web/image/res.partner/3/image_small" data-oe-model="res.partner" data-oe-id="" class="o_thread_message_avatar rounded-circle ">-->
+												</div>
+												<div class="o_thread_message_core">
+													<p class="o_mail_info text-muted">
+														<!--Note by-->
+                             <span t-field="i.message_type" />
+														<strong data-oe-model="res.partner" data-oe-id="" class="o_thread_author ">
+														<!--YourCompany, Mitchell Admin-->
+                               <span t-field="i.create_uid" /> 
+														</strong>
+                              - <small class="o_mail_timestamp" title="05/04/2020 14:32:52">
+                                  <!--2 days ago-->
+                                  <span t-field="i.create_date" />
+                              </small>
+														<!--<span class="o_thread_icons">-->
+														<!--<i class="fa fa-lg o_thread_icon o_thread_message_star fa-star-o" data-message-id="43" title="Mark as Todo" role="img" aria-label="Mark as Todo"></i>-->
+														<!--</span>-->
+													</p>
+													<div class="o_thread_message_content">
+														<!--<p>Heres is another comment from the website interface. -->
+															<!--Also adding a new attachment-->
+														<!--</p>-->
+                               <span t-field="i.body" />
+														<div class="o_attachments_previews">
+															<div class="o_attachment" title="rwlogo.png">
+																<div class="o_attachment_wrap">
+																	<div class="o_image_box">
+																		<!--<div class="o_attachment_image" style="background-image:url('/web/image/631/160x160/?crop=true')"></div>-->
+																		<div class="o_image_overlay o_attachment_view" >
+																			<!--<span class="fa fa-times o_attachment_delete_cross" title="Delete rwlogo.png" data-id="631" data-name="rwlogo.png"></span>-->
+																			<!--<span class="o_attachment_title text-white">rwlogo.png</span>-->
+																			<!--<a class="o_attachment_download" href="/web/content/631?download=true">-->
+																			<!--<i class="fa fa-download text-white" title="Download rwlogo.png" role="img" aria-label="Download"></i>-->
+																			<!--</a>-->
+                                      <ul class="list-unstyled">
+                                        <t t-foreach="i.attachment_ids" t-as="att">
+                                          <li class="media">
+                                          <!--<t t-debug="pudb"/>-->
+                                               <img t-attf-src="data:image/jpg;base64,{{ att.datas }}" style="align:left; width:85px;height:85px;"/>
+                                          <div class="media-body">
+                                            <p class="mt-0">
+                                              <span t-field="att.name" />
+                                            </p>
+                                          </div>
+                                        </li>
+                                        </t>
+                                      </ul>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+************************************************************************
+                    </t>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--begin con wiget-->
           </div>
         <!--</t>-->
       </t>
