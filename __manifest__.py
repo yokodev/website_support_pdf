@@ -1,13 +1,12 @@
 {
-    'name':'First patch for the Website Help Desk App. ',
+    'name':'Website Support Ticket PDF export.',
     'version':'0.0.1 ',
     'author':'jesus.amaya@rulesware.com ',
-    'description':'First set of patches and or features required by IT Team ',
+    'description':'Enables the Website Support system to have a ticket exported in PDF format',
     'application':False,
+    'category':'Reports',
     'depends':['website_support'],
     'data': [
-        # 'views/website_support_ticket_views.xml',
-        # 'reports/paperformat.xml',
         'reports/report.xml',
         'reports/ticket.xml'
     ],
