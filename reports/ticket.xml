@@ -83,7 +83,7 @@
                   <table class="table table-condensed table-bordered" style="width: 100%">
                     <caption style="caption-side:top">Extra Fields</caption>
                     <thead>
-                      <th class="table-info text-center">Label</th>
+                      <th style="width:40%" class="table-info text-center">Label</th>
                       <th class="table-info text-center">Value</th>
                     </thead>
                     <tbody>
@@ -179,7 +179,7 @@
                     <caption style="caption-side:top">Chatter</caption>
                     <tbody>
                     <t t-foreach="o.message_ids" t-as="i">
-                      <tr class="table-primary">
+                      <tr class="table-info">
                         <td class="" colspan="2"><span t-field="i.date" t-options='{"widget": "date", "format": "MMMM d yyyy"}'/></td>
                       </tr>
                       <tr class="table-warning">
