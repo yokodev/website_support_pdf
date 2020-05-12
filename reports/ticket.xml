@@ -4,7 +4,7 @@
     <t t-call="web.html_container">
       <t t-foreach="docs" t-as="o">
 
-        <!--<t t-call="web.external_layout">-->
+        <!--<t t-call="web.internal_layout">-->
           <div >
             <!--First Row Main body of Ticket-->
             <div class="row">
@@ -15,11 +15,9 @@
                       <h3><span  t-field="o.subject"/></h3>
                     </caption>
                     <tbody>
-                        <!--This is the problem I'm having with the description field apparently is coming without being cleaned up with a <p>-->
-                          <!--both at the begining and end of the string. Some worarounds would be to trimit like so "o.description[:7]"-->
                       <tr>
                         <th scope="row" class="table-info" style="width: 20%">Ticket Description</th>
-                        <td class="text-left" colspan="3" ><t t-esc="o.description"/></td>
+                        <td class="text-left" colspan="3" ><t t-raw="o.description"/></td>
                       </tr>
                       <tr>
                         <th scope="row" class="table-info" style="width: 20%">Ticket number</th>
@@ -78,11 +76,6 @@
               </div>
             </div>
             <!--first row-->
-            <!--Second row-->
-            <div class="row">
-
-            </div>
-            <!--Second row-->
             <!--begin  Extra fields-->
             <div class="row">
               <div class="col">
@@ -135,38 +128,41 @@
             <div class="row">
               <div class="col">
                 <div class="article">
-                  <table class="table table-condensed table-bordered" style="width: 100%">
-                    <caption style="caption-side:top">CONVERSATION HISTORY IDS</caption>
+                  <table class="table-condensed table-bordered" style="width: 100%">
+                    <caption style="caption-side:top">Media Attachments</caption>
                     <tbody>
-                      <tr><th>By</th><th>From</th><th>Message</th></tr>
-                      <t t-foreach="o.conversation_history_ids" t-as="chat">
-                      <tr>
-                        <td><t t-esc="chat.by"/></td>
-                        <td>
-                          <t t-if="chat.by == ''">
-                            <t t-esc="chat.create_uid.name"/>
-                          </t>
-                          <t t-if="chat.by == 'staff'">
-                            <t t-esc="chat.create_uid.name"/>
-                          </t>
-                          <t t-if="chat.by == 'customer'">
-                            <t t-if="chat.ticket_id.person_name">
-                              <t t-esc="chat.ticket_id.person_name"/>
-                            </t>
-                            <t t-if="not chat.ticket_id.person_name">
-                              <t t-esc="chat.ticket_id.email"/>
-                            </t>
-                          </t>
-                        </td>
-                        <td><t t-raw="chat.content"/></td>
-                      </tr>
-                      <!--This is what I gother from -->
-                      <!--<t t-foreach="doc_ids" t-as="i">-->
-                        <!--<tr>-->
-                          <!--<th scope="row"><t t-esc="doc"/></th>-->
-                          <!--[><td class="text-left"><t t-esc="i.description"/></td><]-->
-                        <!--</tr>-->
+                      <t t-foreach="o.attachment_ids" t-as="a">
+                        <tr>
+                          <td>
+                          <!--<img t-attf-src="data:image/jpg;base64,{{a.datas}}"  class="o_thread_message_avatar rounded-circle"/>-->
+                          <img t-attf-src="data:image/jpg;base64,{{ a.datas }}" style="align:left; width:85px;height:85px;"/>
+                          </td> 
+                          <td><span t-field="a.datas_fname"/> </td>
+                        </tr>
                       </t>
+                      <!--<tr><th>By</th><th>From</th><th>Message</th></tr>-->
+                      <!--<t t-foreach="o.conversation_history_ids" t-as="chat">-->
+                      <!--<tr>-->
+                        <!--<td><t t-esc="chat.by"/></td>-->
+                        <!--<td>-->
+                          <!--<t t-if="chat.by == ''">-->
+                            <!--<t t-esc="chat.create_uid.name"/>-->
+                          <!--</t>-->
+                          <!--<t t-if="chat.by == 'staff'">-->
+                            <!--<t t-esc="chat.create_uid.name"/>-->
+                          <!--</t>-->
+                          <!--<t t-if="chat.by == 'customer'">-->
+                            <!--<t t-if="chat.ticket_id.person_name">-->
+                              <!--<t t-esc="chat.ticket_id.person_name"/>-->
+                            <!--</t>-->
+                            <!--<t t-if="not chat.ticket_id.person_name">-->
+                              <!--<t t-esc="chat.ticket_id.email"/>-->
+                            <!--</t>-->
+                          <!--</t>-->
+                        <!--</td>-->
+                        <!--<td><t t-raw="chat.content"/></td>-->
+                      <!--</tr>-->
+                      <!--</t>-->
                     </tbody>
                   </table>
                 </div>
@@ -182,9 +178,6 @@
                   <table  class="table" style="">
                     <caption style="caption-side:top">Chatter</caption>
                     <tbody>
-                      <!--<tr class="table-primary">-->
-                        <!--<td colspan="2"><p> </p></td>-->
-                      <!--</tr>-->
                     <t t-foreach="o.message_ids" t-as="i">
                       <tr class="table-primary">
                         <td class="" colspan="2"><span t-field="i.date" t-options='{"widget": "date", "format": "MMMM d yyyy"}'/></td>
@@ -247,9 +240,9 @@
             </div>
             <!--begin con wiget-->
           </div>
-        <!--</t>-->
+        </t>
       </t>
-    </t>
+    <!--</t>-->
   </template>
 </odoo>
 
