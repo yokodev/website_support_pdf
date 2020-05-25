@@ -3,13 +3,12 @@
   <template id="report_ticket">
     <t t-call="web.html_container">
       <t t-foreach="docs" t-as="o">
-
-        <!--<t t-call="web.internal_layout">-->
-          <div >
+        <t t-call="web.internal_layout">
+          <!--<div >-->
             <!--First Row Main body of Ticket-->
-            <div class="row">
-              <div class="col">
-                <div class="article">
+            <!--<div >-->
+              <!--<div >-->
+                <!--<div >-->
                   <table class="table table-condensed table-bordered" style="width: 100%">
                     <caption  style="caption-side:top">
                       <h3><span  t-field="o.subject"/></h3>
@@ -72,14 +71,14 @@
                       </tr>
                     </tbody>
                   </table>  
-                </div>
-              </div>
-            </div>
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
             <!--first row-->
             <!--begin  Extra fields-->
-            <div class="row">
-              <div class="col">
-                <div class="article">
+            <!--<div >-->
+              <!--<div >-->
+                <!--<div >-->
                   <table class="table table-condensed table-bordered" style="width: 100%">
                     <caption style="caption-side:top">Extra Fields</caption>
                     <thead>
@@ -95,14 +94,14 @@
                       </t>
                     </tbody>
                   </table>
-                </div>
-              </div>
-            </div>
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
             <!--END Extra fields-->
             <!--begin SLA-->
-            <div class="row">
-              <div class="col">
-                <div class="article">
+            <!--<div >-->
+              <!--<div >-->
+                <!--<div >-->
                   <table class="table table-condensed table-bordered" style="width: 100%">
                     <caption style="caption-side:top">SLA</caption>
                     <tbody>
@@ -120,14 +119,14 @@
                       </tr>
                     </tbody>
                   </table>
-                </div>
-              </div>
-            </div>
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
             <!--END SLA-->
             <!--begin LOGS-->
-            <div class="row">
-              <div class="col">
-                <div class="article">
+            <!--<div >-->
+              <!--<div >-->
+                <!--<div >-->
                   <table class="table-condensed table-bordered" style="width: 100%">
                     <caption style="caption-side:top">Media Attachments</caption>
                     <tbody>
@@ -165,16 +164,16 @@
                       <!--</t>-->
                     </tbody>
                   </table>
-                </div>
-              </div>
-            </div>
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
             <!--END LOGS-->
             <!--BEGIN TRY-->
             <!--END TRY-->
             <!--begin con wiget-->
-            <div class="row">
-              <div class="col">
-                <div class="article">
+            <!--<div >-->
+              <!--<div >-->
+                <!--<div >-->
                   <table  class="table" style="">
                     <caption style="caption-side:top">Chatter</caption>
                     <tbody>
@@ -235,14 +234,14 @@
                     </t>
                     </tbody>
                   </table>
-                </div>
-              </div>
-            </div>
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
             <!--begin con wiget-->
-          </div>
+          <!--</div>-->
         </t>
       </t>
-    <!--</t>-->
+    </t>
   </template>
 </odoo>
 
