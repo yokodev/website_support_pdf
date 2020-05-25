@@ -29,6 +29,6 @@ You can also install it from the command line like so:
 Install like any other odoo module in Odoo
 
 ### Todos
-* PR are Welcome Contribuiting Guide
-* Contribuiting Guide
-* Code of conduct
+* *PRs are Welcome*... 
+* *Contribuiting Guide*
+* *Code of conduct*
